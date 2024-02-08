@@ -1,0 +1,16 @@
+#1 - Gerar imagem do postgres
+  cd Postgres
+  docker build -t carta-postgres .
+
+#2 - Rodar o build do docker-compose 
+  docker compose up --build
+
+Caso não haja sucesso logo de primeira, deve analisar duas situações
+
+#1 Portas especificadas no Dockerfile do PHP/Postgres estão disponíveis?
+  Se não, atribua uma porta disponível
+
+#2 O container postgres já recebeu o backup do banco da aplicação?
+  Caso não tenha, acesse o banco com o PGadmin ou IDE da sua preferencia, acesse o mesmo colocando o ip da maquina host, e as credências específicadas no Dockerfile postgres, ao acessar o banco restaure o backup e finalize e inicialize novamente o docker-compose.
+
+  OBS: eu tive problema ao tentar restaurar o backup do gestão da carta que foi gerado no postgres 12, estando eu usando o postgres 16 para realizar a restauração, caso aconteça o mesmo busque uma forma de resolver a incompatibilidade ou desatualize a versão do seu postgres para 12

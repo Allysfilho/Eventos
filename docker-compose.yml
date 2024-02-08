@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  eventos-postgres:
+    image: eventos-postgres
+    ports:
+      - "5433:5432"
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+  
+  eventos-redis:
+    image: "redis:latest"
+    ports:
+      - "6379:6379"
+
+  eventos-php:
+    build:
+      context: ./PHP/
+    ports:
+      - "8000:8000"
+    depends_on:
+      - eventos-postgres
+    command: ["bash", "-c", "composer install && php artisan serve --host=0.0.0.0"]
+    volumes:
+      - type: bind
+        source: ./PHP/
+        target: /var/www/app
+        consistency: cached
+
+  eventos-octane:
+    build:
+      context: ./PHP/
+    ports:
+      - "8001:8001"
+    depends_on:
+      - eventos-postgres
+    command: ["bash", "-c", "php artisan octane:start --host=0.0.0.0 --port=8001"]
+    volumes:
+      - type: bind
+        source: ./PHP/
+        target: /var/www/app
+        consistency: cached
+
+volumes:
+  pg-data:
