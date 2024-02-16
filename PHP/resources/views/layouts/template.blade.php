@@ -9,15 +9,7 @@
 </head>
 <body>
     <div id="app">
-        <header>
-            </header>
-
-        <main>
-            @yield('content')
-        </main>
-
-        <footer>
-            </footer>
+        @yield('content')
     </div>
 
     <script src="{{ mix('js/app.js') }}"></script>

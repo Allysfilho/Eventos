@@ -22,6 +22,7 @@
         "vue-loader": "^16.8.3"
     },
     "dependencies": {
+        "@mdi/font": "^7.4.47",
         "laravel-mix": "^6.0.49",
         "vuetify": "^3.5.3"
     }

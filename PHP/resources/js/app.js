@@ -6,6 +6,9 @@ import 'vuetify/styles'
 import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
+import 'vuetify/dist/vuetify.min.css';
+
+import '@mdi/font/css/materialdesignicons.min.css';
 
 const vuetify = createVuetify({
   components,
@@ -14,7 +17,15 @@ const vuetify = createVuetify({
 
 const app = createApp({});
 
-import ExampleComponent from './components/ExampleComponent.vue';
-app.component('example-component', ExampleComponent);
+import App from './components/App.vue';
+import DashboardComponent from './components/DashboardComponent.vue';
+import NavbarComponent from './components/NavbarComponent.vue';
+import SidebarComponent from './components/SidebarComponent.vue';
+
+app
+    .component('app', App)
+    .component('dashboard-component', DashboardComponent)
+    .component('navbar-component', NavbarComponent)
+    .component('sidebar-component', SidebarComponent);
 
 app.use(vuetify).mount('#app');
