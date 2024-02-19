@@ -4,27 +4,34 @@
 
         <Navbar @toggle-drawer="toggleDrawer"/>
 
-        <Dashboard/>
+        <router-view></router-view>
     </v-app>
 </template>
 
 <script>
+// Importando componentes
 import Dashboard from './DashboardComponent.vue';
 import Navbar from './NavbarComponent.vue';
 import Sidebar from './SidebarComponent.vue';
+import Users from './UsersComponent.vue';
+
+// Importando o router do vue
+import { useRoute } from 'vue-router';
 
 export default {
     components: {
         Dashboard,
         Navbar,
         Sidebar,
+        Users,
+    },
+    setup() {
+    // Use o Vue Router para acessar informações sobre a rota atual
+    const route = useRoute();
+
+    console.log(route.path);
     },
     data: () => ({
-      open: ['Users'],
-      admins: [
-        ['Management', 'mdi-account-multiple-outline'],
-        ['Settings', 'mdi-cog-outline'],
-      ],
       isDrawerOpen: false
     }),
     methods: {

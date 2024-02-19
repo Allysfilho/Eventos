@@ -1,26 +1,15 @@
-<!-- Sidebar.vue -->
 <template>
     <v-navigation-drawer v-model="drawerOpen">
-        <v-list v-model:opened="open">
-            <v-list-item prepend-icon="mdi-home" title="Home"></v-list-item>
-
-            <v-list-group value="Users">
-                <template v-slot:activator="{ props }">
-                <v-list-item
-                    v-bind="props"
-                    prepend-icon="mdi-account-circle"
-                    title="Users"
-                ></v-list-item>
-                </template>
-
-                <v-list-item
-                v-for="([title, icon], i) in admins"
+        <v-list>
+            <v-list-item
+                v-for="([title, icon, route], i) in admins"
                 :key="i"
                 :title="title"
                 :prepend-icon="icon"
                 :value="title"
-                ></v-list-item>
-            </v-list-group>
+                :to="route"
+            >
+            </v-list-item>
         </v-list>
     </v-navigation-drawer>
 </template>
@@ -37,8 +26,9 @@
         data: () => ({
             open: ['Users'],
             admins: [
-                ['Management', 'mdi-account-multiple-outline'],
-                ['Settings', 'mdi-cog-outline'],
+                ['Inicio', 'mdi-home'],
+                ['Usuários', 'mdi-account-multiple-outline', '/users'],
+                ['Eventos', 'mdi-party-popper', '/'],
             ],
             drawerOpen: false
         }),

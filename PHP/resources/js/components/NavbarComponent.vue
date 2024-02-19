@@ -1,4 +1,3 @@
-<!-- Navbar.vue -->
 <template>
     <v-app-bar flat class="border-b">
         <v-app-bar-nav-icon @click="toggleDrawer"></v-app-bar-nav-icon>

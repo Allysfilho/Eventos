@@ -24,6 +24,7 @@
     "dependencies": {
         "@mdi/font": "^7.4.47",
         "laravel-mix": "^6.0.49",
+        "vue-router": "^4.2.5",
         "vuetify": "^3.5.3"
     }
 }
